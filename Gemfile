@@ -54,6 +54,9 @@ gem 'rails_12factor', group: :production
 
 gem 'pg', group: :production
 
+#dropbox and carrierwave
 gem "carrierwave"
 
 gem 'carrierwave-dropbox'
+
+gem "figaro"
