@@ -60,3 +60,7 @@ gem "carrierwave"
 gem 'carrierwave-dropbox'
 
 gem "figaro"
+
+gem "mini_magick"
+
+gem "devise"
