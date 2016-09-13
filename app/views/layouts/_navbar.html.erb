@@ -1,18 +1,35 @@
 <!--Nav-->
   <nav>
     <div class="nav-wrapper container">
-      <a id="logo-container" href="/" class="brand-logo">Yelp</a>
+
+	  <a><%= link_to "Yelp", root_path, class: "brand-logo", id: "logo-container" %></a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="/">HOME</a></li>
-		<li><a href="/pages/about">ABOUT</a></li>
-        <li><a href="/pages/contact">CONTACTS</a></li>
-      </ul>
+	    
+        <li><%= link_to "HOME", root_path %></li>
+		<li><%= link_to "ABOUT", pages_about_path %></li>
+		<li><%= link_to "CONTACTS", pages_contact_path %></li>
+		
+		<% if user_signed_in? %>
+
+			<li><%= link_to "Sign-Out", destroy_user_session_path, method: :delete %></li>
+			<li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+		
+		<% else %>
+		
+			<li><%= link_to "Sign-Up", new_user_registration_path %></li>
+			<li><%= link_to "Sign-In",new_user_session_path %></li>
+		
+		<% end %>
+	  
+	  </ul>
 
       <ul id="nav-mobile" class="side-nav">
-        <li><a href="/">HOME</a></li>
-		<li><a href="/pages/about">About</a></li>
-        <li><a href="/pages/contact">Contacts</a></li>
-        
+        <li><%= link_to "Home", root_path %></li>
+		<li><%= link_to "About", pages_about_path %></li>
+		<li><%= link_to "Contacts", pages_contact_path %></li>
+		<li><%= link_to "Sign-Up", new_user_registration_path %></li>
+		<li><%= link_to "Sign-Out", destroy_user_session_path, method: :delete %></li>
+		        
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
