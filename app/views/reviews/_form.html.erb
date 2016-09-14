@@ -11,10 +11,8 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :rating %><br>
-    <%= f.number_field :rating %>
-  </div>
+  <div id="star-rating"></div>
+  
   <div class="field">
     <%= f.label :comment %><br>
     <%= f.text_area :comment %>
@@ -23,3 +21,10 @@
     <%= f.submit class: "waves-effect waves-light btn" %>
   </div>
 <% end %>
+
+<script>
+	$('#star-rating').raty({
+		path: 'https://dl.dropboxusercontent.com/u/39722693',
+		scoreName: 'review[rating]'
+	});
+</script>
