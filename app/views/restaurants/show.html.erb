@@ -1,29 +1,50 @@
-<%= image_tag @restaurant.image_url %>
+<div class="section">
+	<div class = "row">
+		<div class = "col s12">
+			<%= image_tag @restaurant.image_url %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @restaurant.name %>
-</p>
+			<p>
+			  <strong>Name:</strong>
+			  <%= @restaurant.name %>
+			</p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @restaurant.address %>
-</p>
+			<p>
+			  <strong>Address:</strong>
+			  <%= @restaurant.address %>
+			</p>
 
-<p>
-  <strong>Website:</strong>
-  <%= @restaurant.website %>
-</p>
+			<p>
+			  <strong>Website:</strong>
+			  <%= link_to @restaurant.website, "http://#{@restaurant.website}" %>
+			</p>
+		</div>
+	</div>
+</div>
 
 <%= link_to "Write a Review", new_restaurant_review_path(@restaurant), class: "btn"%>
-<% if @reviews.blank? %>
-	<h4> No reviews yet, be the first to write one!</h4>
-	<% else %>
-		<% @reviews.each do |review| %>
-			<p><%= review.rating %></p>
-			<p><%= review.comment %></p>
-		<% end %>
-	<% end %>
-	
-<%= link_to 'Edit', edit_restaurant_path(@restaurant), :class => 'waves-effect waves-light btn' %> |
-<%= link_to 'Back', restaurants_path, :class => 'waves-effect waves-light btn' %>
+<div class="section">
+	<div class="row">
+		<div class="col s12">
+			<% if @reviews.blank? %>
+				<h5> No reviews yet, be the first to write one!</h5>
+				<% else %>
+					<% @reviews.each do |review| %>
+						<div class="star-rating" data-score = <%= review.rating %> ></div>
+						<p><%= review.comment %></p>
+					<% end %>
+				<% end %>
+				
+			<%= link_to 'Edit', edit_restaurant_path(@restaurant), :class => 'waves-effect waves-light btn' %> |
+			<%= link_to 'Back', restaurants_path, :class => 'waves-effect waves-light btn' %>
+		</div>
+	</div>
+</div>
+<script>
+	$('.star-rating').raty({
+		path: 'https://dl.dropboxusercontent.com/u/39722693',
+		readOnly: true,
+		score: function(){
+			return $(this).attr('data-score');
+		}
+	});
+</script>
