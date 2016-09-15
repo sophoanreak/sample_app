@@ -3,9 +3,9 @@
 		<h2 class="center">Restaurant's Profile</h2>
 
 		<div class = "col s12 m6">
-		
-			<%= image_tag @restaurant.image_url %>
-			
+			<div class="center card-image">
+				<%= image_tag @restaurant.image_url %>
+			</div>
 			<h4><%= @restaurant.name %></h4>
 			
 			<div class="star-rating" data-score = <%= @avg_rating %> ></div>
@@ -20,17 +20,34 @@
 			  <strong>Website:</strong>
 			  <%= link_to @restaurant.website, "http://#{@restaurant.website}" %>
 			</p>
-			<%= link_to 'Edit', edit_restaurant_path(@restaurant), :class => 'waves-effect waves-light btn' %> |
-			<%= link_to 'Back', restaurants_path, :class => 'waves-effect waves-light btn' %>
+			
+		</div>
+
+		<div class = "col s12 m6">
+			<div class="card-image">
+				<iframe
+					width="450"
+					height="400"
+					frameborder="0" style ="border:0"
+					src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAkZy-_SBf4MOP4iNJzdYWImPV-Ng6iSss&q=<%= @restaurant.address.parameterize %>">
+				</iframe>
+			</div>
 		</div>
 	</div>
 </div>
+	<div class="center">
+		<%= link_to 'Edit', edit_restaurant_path(@restaurant), :class => 'waves-effect waves-light btn' %> |
+		<%= link_to 'Back', restaurants_path, :class => 'waves-effect waves-light btn' %>
+	</div>
+
 
 <div class="">
     <h2 class="center">Restaurant's Reviews</h2>
 </div>
 
-<%= link_to "Write a Review", new_restaurant_review_path(@restaurant), class: "btn"%>
+<div class="center">
+	<%= link_to "Write a Review", new_restaurant_review_path(@restaurant), class: "btn"%>
+</div>
 
 <div class="section">
 	<div class="row">
