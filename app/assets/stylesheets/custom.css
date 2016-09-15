@@ -1,0 +1,7 @@
+table.table_th_width > thead > tr > th.th_width {
+	width: 15%;
+}
+
+table.table_th_width > tbody > tr > td.comment_align{
+	vertical-align: text-top
+}
