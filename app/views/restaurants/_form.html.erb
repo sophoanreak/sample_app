@@ -1,13 +1,15 @@
 <%= form_for(@restaurant, :html => { multipart: true}) do |f| %>
   <% if @restaurant.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@restaurant.errors.count, "error") %> prohibited this restaurant from being saved:</h2>
+    <div id="error_explanation" class="card blue-grey darken-1">
+		<div class="card-content white-text">
+		  <h4><%= pluralize(@restaurant.errors.count, "error") %> prohibited this restaurant from being saved:</h4>
 
-      <ul>
-      <% @restaurant.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+		  <ul>
+		  <% @restaurant.errors.full_messages.each do |message| %>
+			<li><%= message %></li>
+		  <% end %>
+		  </ul>
+		</div>
     </div>
   <% end %>
 
@@ -21,7 +23,7 @@
   </div>
   <div class="field">
     <%= f.label :website %><br>
-    <%= f.text_field :website %>
+    <%= f.text_field :website, placeholder: "http://www.super.com/" %>
   </div>
   <div class="field">
     <%= f.label :image %><br>
